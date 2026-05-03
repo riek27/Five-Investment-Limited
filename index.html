@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Southern Coastal Homes | Award-Winning Custom Home Builder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Five Investment Limited | Powering Construction & Equipment Solutions in South Sudan</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/100.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/200.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/300.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/400.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/500.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/600.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/700.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/800.css');
+        @import url('https://cdn.jsdelivr.net/gh/fontsource/fontsource/files/google-fonts/css/inter/900.css');
+
         :root {
-            --charcoal: #2c2c2c;
-            --gold: #bfa06b;
-            --white: #ffffff;
-            --beige: #f5f2ed;
-            --light-gray: #f8f8f8;
-            --transition: all 0.3s ease;
+            --primary: #0a0e17;
+            --primary-light: #111827;
+            --secondary: #1a2332;
+            --accent: #d4a574;
+            --accent-hover: #b8895e;
+            --accent-glow: rgba(212, 165, 116, 0.3);
+            --text-dark: #0a0e17;
+            --text-body: #4a5568;
+            --text-light: #a0aec0;
+            --text-white: #ffffff;
+            --bg-cream: #faf8f5;
+            --bg-warm: #f5f2ed;
+            --bg-dark: #0a0e17;
+            --radius: 12px;
+            --radius-lg: 24px;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
+            --font: 'Inter', -apple-system, sans-serif;
         }
 
         * {
@@ -22,1551 +43,3229 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            font-size: 16px;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
-            color: var(--charcoal);
-            background-color: var(--white);
-            overflow-x: hidden;
+            font-family: var(--font);
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            background: #ffffff;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--primary);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 32px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .loader-logo-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary);
+            animation: loaderPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes loaderPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.4);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 0 24px rgba(212, 165, 116, 0);
+            }
+        }
+
+        .loader-text {
+            color: var(--accent);
+            font-size: 11px;
             font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.3s forwards;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .loader-bar-container {
+            width: 240px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.2s forwards;
         }
 
-        section {
-            padding: 5rem 0;
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0);
+            border-radius: 2px;
+            animation: loadProgress 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Header & Navigation */
-        header {
+        @keyframes loadProgress {
+            0% {
+                width: 0%;
+            }
+            60% {
+                width: 80%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0);
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            transition: var(--transition);
+            padding: 24px 0;
+            transition: all 0.5s var(--transition);
         }
 
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .navbar.scrolled {
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+        }
+
+        .navbar.transparent {
+            background: transparent;
         }
 
         .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            text-decoration: none;
+        .nav-logo {
             display: flex;
             align-items: center;
-        }
-
-        .logo span {
-            color: var(--gold);
+            gap: 14px;
+            text-decoration: none;
+            z-index: 1001;
         }
 
         .logo-icon {
-            margin-right: 8px;
-            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
         }
 
-        nav ul {
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .logo-text {
             display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text .brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .logo-text .tagline {
+            font-size: 10px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             list-style: none;
         }
 
-        nav ul li {
-            position: relative;
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--charcoal);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
             font-weight: 500;
-            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.4s var(--transition);
             position: relative;
-            padding: 0.5rem 0;
         }
 
-        nav ul li a:hover {
-            color: var(--gold);
+        .nav-links a:hover {
+            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        nav ul li a::after {
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
             height: 2px;
-            background-color: var(--gold);
-            transition: var(--transition);
+            background: var(--accent);
+            border-radius: 2px;
         }
 
-        nav ul li a:hover::after {
-            width: 100%;
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--white);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(15px);
-            transition: var(--transition);
-            border-radius: 0 0 5px 5px;
-            overflow: hidden;
-            z-index: 100;
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s var(--transition);
         }
 
-        nav ul li:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .nav-phone:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(212, 165, 116, 0.08);
         }
 
-        .dropdown li {
-            margin: 0;
-            width: 100%;
+        .nav-phone i {
+            width: 32px;
+            height: 32px;
+            background: rgba(212, 165, 116, 0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: var(--accent);
         }
 
-        .dropdown li a {
-            display: block;
-            padding: 0.9rem 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .dropdown li a:hover {
-            background-color: var(--beige);
-            padding-left: 1.8rem;
-        }
-
-        .dropdown li:last-child a {
-            border-bottom: none;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
+        .btn-quote-nav {
+            background: linear-gradient(135deg, var(--accent), #c89a6c);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
             border: none;
-            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--charcoal);
-            transition: var(--transition);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.25);
         }
 
-        .mobile-menu-btn:hover {
-            color: var(--gold);
+        .btn-quote-nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #e8c4a0, var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        /* Hero Slider */
+        .btn-quote-nav:hover::before {
+            opacity: 1;
+        }
+
+        .btn-quote-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-quote-nav span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            transition: all 0.4s var(--transition);
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: var(--text-white);
+            border-radius: 2px;
+            transition: all 0.4s var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             overflow: hidden;
-            margin-top: 80px;
+            background: var(--primary);
         }
 
-        .slider {
+        .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            z-index: 0;
         }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-bg img {
             width: 100%;
             height: 100%;
-            opacity: 0;
+            object-fit: cover;
             transform: scale(1.1);
-            transition: opacity 1.5s ease, transform 8s ease;
-            background-size: cover;
-            background-position: center;
+            transition: transform 0.3s ease-out;
         }
 
-        .slide.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .slide-content {
+        .hero-overlay {
             position: absolute;
-            bottom: 20%;
-            left: 10%;
-            color: var(--white);
-            max-width: 600px;
-            padding: 2rem;
-            background-color: rgba(44, 44, 44, 0.7);
-            border-left: 4px solid var(--gold);
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(10, 14, 23, 0.97) 0%,
+                    rgba(10, 14, 23, 0.85) 40%,
+                    rgba(10, 14, 23, 0.6) 100%);
+            z-index: 1;
         }
 
-        .slide-content h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .slide-content p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--charcoal);
-            padding: 0.8rem 1.8rem;
-            border-radius: 2px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .btn:hover {
-            background-color: #a88a5c;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .slider-controls {
+        .hero-gradient-orb {
             position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1rem;
-            z-index: 10;
-        }
-
-        .slider-control {
-            width: 12px;
-            height: 12px;
+            width: 600px;
+            height: 600px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .slider-control.active {
-            background-color: var(--white);
-            transform: scale(1.2);
+        .hero-gradient-orb.orb-1 {
+            top: -20%;
+            right: -10%;
+            background: var(--accent);
+            animation: orbFloat 15s ease-in-out infinite;
         }
 
-        /* Featured Homes */
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        .hero-gradient-orb.orb-2 {
+            bottom: -30%;
+            left: -10%;
+            background: #4a90d9;
+            animation: orbFloat 20s ease-in-out infinite reverse;
         }
 
-        .section-title:after {
-            content: '';
+        @keyframes orbFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        .hero-grid-overlay {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--gold);
+            inset: 0;
+            z-index: 1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+            pointer-events: none;
         }
 
-        .homes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .home-card {
-            background-color: var(--white);
-            border-radius: 3px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .home-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .home-card img {
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 160px 40px 120px;
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .home-card-content {
-            padding: 1.5rem;
-        }
-
-        .home-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .home-card .location {
-            color: var(--gold);
-            font-weight: 500;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Testimonial */
-        .testimonial {
-            background-color: var(--beige);
-            position: relative;
-        }
-
-        .testimonial-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-style: italic;
-            font-size: 1.2rem;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .testimonial-content:before, .testimonial-content:after {
-            content: '"';
-            font-size: 4rem;
-            color: var(--gold);
-            opacity: 0.3;
-            position: absolute;
-        }
-
-        .testimonial-content:before {
-            top: -20px;
-            left: 20px;
-        }
-
-        .testimonial-content:after {
-            bottom: -40px;
-            right: 20px;
-        }
-
-        .client-name {
-            margin-top: 2rem;
-            font-weight: 600;
-            font-style: normal;
-            color: var(--charcoal);
-        }
-
-        /* Awards */
-        .awards {
-            background-color: var(--light-gray);
-        }
-
-        .awards-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .award-logo {
-            margin-top: 2rem;
-            display: inline-block;
-            background-color: var(--white);
-            padding: 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .award-logo img {
-            max-width: 200px;
-            height: auto;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--charcoal);
-            color: var(--white);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 1fr 420px;
+            gap: 80px;
+            align-items: center;
         }
 
-        .footer-column h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--gold);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            padding-left: 5px;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
+        .hero-main {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 36px;
         }
 
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--gold);
-            margin-top: 3px;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            width: fit-content;
+            backdrop-filter: blur(10px);
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulseDot 2s ease-in-out infinite;
         }
 
-        .social-links a {
+        @keyframes pulseDot {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+        }
+
+        .hero-badge span {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 6vw, 84px);
+            font-weight: 900;
+            color: var(--text-white);
+            line-height: 1.02;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line-inner {
+            display: block;
+            animation: lineReveal 1s var(--transition) both;
+        }
+
+        .hero h1 .line:nth-child(2) .line-inner {
+            animation-delay: 0.15s;
+        }
+
+        .hero h1 .line:nth-child(3) .line-inner {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes lineReveal {
+            from {
+                transform: translateY(110%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), #e8c4a0, var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientMove 4s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-description {
+            font-size: clamp(17px, 1.8vw, 20px);
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 560px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s var(--transition) 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* Page Content Styles */
-        .page-header {
-            height: 40vh;
-            background-color: var(--charcoal);
-            background-image: linear-gradient(rgba(44, 44, 44, 0.8), rgba(44, 44, 44, 0.8)), url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 80px;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            color: var(--white);
-        }
-
-        .page-content {
-            padding: 5rem 0;
-        }
-
-        /* About Page */
-        .about-section {
-            margin-bottom: 4rem;
-        }
-
-        .team {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .team-member-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 1.5rem;
-            border: 5px solid var(--beige);
-        }
-
-        .team-member-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Portfolio Page */
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s var(--transition) 0.65s both;
         }
 
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
-            background-color: var(--light-gray);
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent), #c89a6c);
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
             border: none;
-            border-radius: 2px;
             cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Lato', sans-serif;
-            font-weight: 500;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--gold);
-            color: var(--white);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
             position: relative;
             overflow: hidden;
-            border-radius: 3px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            height: 300px;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.25);
         }
 
-        .portfolio-item img {
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #e8c4a0, var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-primary span,
+        .btn-primary i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-white);
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(212, 165, 116, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 24px;
+            animation: fadeInUp 0.8s var(--transition) 0.8s both;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item:last-child::after {
+            display: none;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .hero-side {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeInRight 0.8s var(--transition) 0.6s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.5s var(--transition);
+        }
+
+        .hero-card:hover {
+            border-color: rgba(212, 165, 116, 0.3);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .hero-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 165, 116, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card-icon i {
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        .hero-card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .hero-card-value {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .hero-card-sub {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 4px;
+        }
+
+        .hero-card-bar {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 3px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .hero-card-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 1.5s var(--transition) 1s;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeInUp 0.8s var(--transition) 1s both;
+        }
+
+        .hero-scroll-indicator span {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+            background: var(--accent);
+            animation: scrollDown 2s ease-in-out infinite;
         }
 
-        .portfolio-item:hover img {
+        @keyframes scrollDown {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        .section {
+            padding: 140px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 48px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .section-label::before {
+            background: linear-gradient(90deg, transparent, var(--accent));
+        }
+
+        .section-label::after {
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .section-title {
+            font-size: clamp(40px, 4.5vw, 58px);
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .section-title .accent {
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about {
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s var(--transition);
+        }
+
+        .about-image:hover img {
             transform: scale(1.05);
         }
 
-        .portfolio-item-overlay {
+        .about-image::after {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(transparent, rgba(44, 44, 44, 0.9));
-            color: var(--white);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: var(--transition);
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(10, 14, 23, 0.4));
         }
 
-        .portfolio-item:hover .portfolio-item-overlay {
-            transform: translateY(0);
+        .about-floating-badge {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            color: var(--primary);
+            padding: 32px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 16px 48px rgba(212, 165, 116, 0.35);
+            z-index: 2;
+        }
+
+        .about-floating-badge .number {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .about-floating-badge .label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 6px;
+        }
+
+        .about-decorative-pattern {
+            position: absolute;
+            top: -24px;
+            left: -24px;
+            width: 120px;
+            height: 120px;
+            background: repeating-linear-gradient(45deg,
+                    var(--accent),
+                    var(--accent) 2px,
+                    transparent 2px,
+                    transparent 16px);
+            border-radius: 20px;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content .section-label {
+            justify-content: flex-start;
+        }
+
+        .about-content .section-label::before {
+            display: none;
+        }
+
+        .about-content .section-title {
+            text-align: left;
+        }
+
+        .about-text {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 36px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--bg-cream);
+            border-radius: 12px;
+            transition: all 0.4s var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .about-feature:hover {
+            background: rgba(212, 165, 116, 0.08);
+            border-color: rgba(212, 165, 116, 0.2);
+            transform: translateX(8px);
+        }
+
+        .about-feature i {
+            color: var(--accent);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .about-feature span {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .services {
+            background: var(--bg-cream);
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .services-grid.five-items .service-card:nth-child(4) {
+            grid-column: 1 / 2;
+        }
+        .services-grid.five-items .service-card:nth-child(5) {
+            grid-column: 2 / 4;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 48px 36px;
+            transition: all 0.5s var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.5s var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+        }
+
+        .service-card:hover::after {
+            transform: translate(20%, 20%);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(212, 165, 116, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            transition: all 0.5s var(--transition);
+        }
+
+        .service-icon i {
+            font-size: 26px;
+            color: var(--accent);
+            transition: all 0.5s var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            font-size: 64px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.02);
+            line-height: 1;
+            transition: all 0.5s var(--transition);
+        }
+
+        .service-card:hover .service-number {
+            color: rgba(212, 165, 116, 0.08);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        .equipment {
+            background: #ffffff;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .equipment-card {
+            background: var(--bg-cream);
+            border-radius: var(--radius-lg);
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.5s var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .equipment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--transition);
+        }
+
+        .equipment-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(212, 165, 116, 0.2);
+            background: #ffffff;
+        }
+
+        .equipment-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(212, 165, 116, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.5s var(--transition);
+        }
+
+        .equipment-card:hover .equipment-icon {
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+        }
+
+        .equipment-icon i {
+            font-size: 30px;
+            color: var(--accent);
+            transition: all 0.5s var(--transition);
+        }
+
+        .equipment-card:hover .equipment-icon i {
+            color: var(--primary);
+        }
+
+        .equipment-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .equipment-card .equipment-tag {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .equipment-card.and-more {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.04), rgba(212, 165, 116, 0.01));
+            border: 2px dashed rgba(212, 165, 116, 0.2);
+        }
+
+        .equipment-card.and-more:hover {
+            border-color: var(--accent);
+            background: rgba(212, 165, 116, 0.06);
+        }
+
+        .equipment-card.and-more .equipment-icon {
+            background: rgba(212, 165, 116, 0.12);
+        }
+
+        .equipment-card.and-more .equipment-icon i {
+            color: var(--accent);
+        }
+
+        .why-us {
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .why-us .section-title {
+            color: var(--text-white);
+        }
+
+        .why-us .section-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 48px 36px;
+            transition: all 0.5s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .why-card::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .why-card:hover::before,
+        .why-card:hover::after {
             opacity: 1;
         }
 
-        /* FAQ Page */
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 165, 116, 0.2);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .why-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            transition: all 0.5s var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card:hover .why-card-icon {
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+        }
+
+        .why-card-icon i {
+            font-size: 26px;
+            color: var(--accent);
+            transition: all 0.5s var(--transition);
+        }
+
+        .why-card:hover .why-card-icon i {
+            color: var(--primary);
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-section {
+            padding: 100px 0;
+            background: var(--bg-warm);
+            overflow: hidden;
+        }
+
+        .testimonial-section .section-header {
+            margin-bottom: 60px;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 32px;
+            animation: marquee 40s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            min-width: 420px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author-info span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .faqs {
+            background: #ffffff;
+        }
+
+        .faqs-container {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
         .faq-item {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s var(--transition);
         }
 
         .faq-question {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 28px 0;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
+            gap: 20px;
+            transition: all 0.3s ease;
         }
 
-        .faq-question i {
-            color: var(--gold);
-            transition: var(--transition);
+        .faq-question:hover {
+            padding-left: 8px;
+        }
+
+        .faq-question h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+
+        .faq-item.active .faq-question h3 {
+            color: var(--accent);
+        }
+
+        .faq-toggle {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s var(--transition);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--accent);
+            transform: rotate(45deg);
+        }
+
+        .faq-toggle i {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle i {
+            color: var(--primary);
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
-            margin-top: 1rem;
-            color: #555;
+            transition: max-height 0.5s var(--transition);
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 28px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.9;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 300px;
+            max-height: 400px;
         }
 
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
+        .contact {
+            background: var(--bg-cream);
         }
 
-        /* Contact Page */
-        .contact-container {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
         }
 
-        .contact-form input, .contact-form textarea {
+        .contact-info .section-label {
+            justify-content: flex-start;
+        }
+
+        .contact-info .section-label::before {
+            display: none;
+        }
+
+        .contact-info .section-title {
+            text-align: left;
+        }
+
+        .contact-text {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 48px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+            background: #ffffff;
+            border-radius: 16px;
+            transition: all 0.4s var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 165, 116, 0.04);
+            border-color: rgba(212, 165, 116, 0.2);
+            transform: translateX(8px);
+        }
+
+        .contact-item-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.4s var(--transition);
+        }
+
+        .contact-item:hover .contact-item-icon {
+            background: linear-gradient(135deg, var(--accent), #e8c4a0);
+        }
+
+        .contact-item-icon i {
+            font-size: 20px;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-item-icon i {
+            color: var(--primary);
+        }
+
+        .contact-item-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .contact-item-content p,
+        .contact-item-content a {
+            font-size: 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--accent);
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+            border-color: var(--accent);
+        }
+
+        .social-link.whatsapp-link {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: rgba(37, 211, 102, 0.2);
+            color: #25d366;
+        }
+
+        .social-link.whatsapp-link:hover {
+            background: #25d366;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            border-color: #25d366;
+        }
+
+        .contact-form-wrapper {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0, var(--accent));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .contact-form-wrapper>p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 36px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #ddd;
-            border-radius: 2px;
-            font-family: 'Lato', sans-serif;
-            transition: var(--transition);
-        }
-
-        .contact-form input:focus, .contact-form textarea:focus {
+            padding: 16px 20px;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            font-family: var(--font);
+            font-size: 15px;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            transition: all 0.4s var(--transition);
             outline: none;
-            border-color: var(--gold);
         }
 
-        .contact-form textarea {
-            min-height: 150px;
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
+            background: #ffffff;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-group textarea {
             resize: vertical;
+            min-height: 130px;
         }
 
-        /* Services Page */
-        .services-grid {
+        .form-row {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .service-card {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 3px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .btn-submit {
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, var(--accent), #c89a6c);
+            color: var(--primary);
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.25);
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #e8c4a0, var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-submit:hover::before {
+            opacity: 1;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-submit span,
+        .btn-submit i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #111827 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: orbFloat 18s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        .cta-content {
             text-align: center;
-            transition: var(--transition);
-            border-top: 4px solid var(--gold);
+            position: relative;
+            z-index: 2;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .cta-content h2 {
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
-        .service-card i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
+        .cta-content p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 44px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
         }
 
-        /* Mobile Menu */
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer {
+            background: #030508;
+            padding: 80px 0 0;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.2), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 64px;
+            padding-bottom: 64px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-brand .logo-text .brand {
+            font-size: 22px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.9;
+            margin-top: 20px;
+            max-width: 340px;
+        }
+
+        .footer-col h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            max-width: 580px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 52px;
+            transform: scale(0.9) translateY(30px);
+            transition: transform 0.5s var(--transition);
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #e8c4a0, var(--accent));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-cream);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s var(--transition);
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .modal-close:hover {
+            background: #fee2e2;
+            color: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .modal>p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 36px;
+        }
+
+        .modal .form-group input,
+        .modal .form-group textarea,
+        .modal .form-group select {
+            background: var(--bg-cream);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--accent), #c89a6c);
+            color: var(--primary);
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s var(--transition);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.5);
+        }
+
         .mobile-nav {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 300px;
+            right: -100%;
+            width: 100%;
+            max-width: 420px;
             height: 100vh;
-            background-color: var(--white);
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
-            transition: var(--transition);
-            padding: 2rem;
+            background: var(--primary);
+            z-index: 1000;
+            padding: 100px 36px 40px;
+            transition: right 0.5s var(--transition);
             overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .mobile-nav.active {
             right: 0;
         }
 
-        .mobile-nav ul {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .mobile-nav ul li {
-            margin-bottom: 1rem;
-        }
-
-        .mobile-nav ul li a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 500;
-            font-size: 1.1rem;
-            display: block;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .mobile-nav-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--charcoal);
-        }
-
-        .overlay {
+        .mobile-nav-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
-            transition: var(--transition);
+            transition: all 0.4s ease;
         }
 
-        .overlay.active {
+        .mobile-nav-overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            nav ul {
+        .mobile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .mobile-phone-cta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 32px;
+            padding: 24px;
+            background: rgba(212, 165, 116, 0.08);
+            border-radius: 16px;
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 20px;
+            border: 1px solid rgba(212, 165, 116, 0.15);
+        }
+
+        .mobile-phone-cta i {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 165, 116, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+            padding: 18px;
+            font-size: 16px;
+            border-radius: 12px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), #c89a6c);
+            color: var(--primary);
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.4s var(--transition);
+        }
+
+        .mobile-quote-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+        }
+
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr 340px;
+                gap: 60px;
+            }
+            .about-grid {
+                gap: 80px;
+            }
+            .equipment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links,
+            .nav-right .nav-phone {
                 display: none;
             }
-            
-            .mobile-menu-btn {
+            .hamburger {
+                display: flex;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .hero-side {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .hero-card {
+                flex: 1;
+                min-width: 240px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+            .about-content .section-label {
+                justify-content: center;
+            }
+            .about-content .section-label::before {
                 display: block;
             }
-            
-            .slide-content h1 {
-                font-size: 2.2rem;
+            .about-content .section-title {
+                text-align: center;
             }
-            
-            .section-title {
-                font-size: 2rem;
+            .about-text {
+                text-align: center;
             }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
+            .about-features {
+                max-width: 520px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .about-content .btn-primary {
+                display: flex;
+                justify-content: center;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid.five-items .service-card:nth-child(4) {
+                grid-column: auto;
+            }
+            .services-grid.five-items .service-card:nth-child(5) {
+                grid-column: auto;
+            }
+            .equipment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-us-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+            .contact-info .section-label {
+                justify-content: center;
+            }
+            .contact-info .section-label::before {
+                display: block;
+            }
+            .contact-info .section-title {
+                text-align: center;
+            }
+            .contact-text {
+                text-align: center;
+            }
+            .contact-details {
+                align-items: center;
+            }
+            .contact-social {
+                justify-content: center;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
             }
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 3rem 0;
+            .section {
+                padding: 100px 0;
             }
-            
-            .slide-content {
-                left: 5%;
-                right: 5%;
-                bottom: 10%;
+            .container {
+                padding: 0 24px;
             }
-            
-            .slide-content h1 {
-                font-size: 1.8rem;
+            .nav-container {
+                padding: 0 24px;
             }
-            
-            .homes-grid, .portfolio-grid {
+            .hero-content {
+                padding: 130px 24px 100px;
+            }
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+            .hero-side {
+                flex-direction: column;
+            }
+            .hero-card {
+                min-width: auto;
+            }
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary,
+            .btn-secondary {
+                justify-content: center;
+            }
+            .hero-stats {
+                gap: 32px;
+            }
+            .stat-item::after {
+                right: -16px;
+                height: 30px;
+            }
+            .about-image img {
+                height: 400px;
+            }
+            .about-floating-badge {
+                bottom: -16px;
+                right: 16px;
+                padding: 24px 32px;
+            }
+            .about-floating-badge .number {
+                font-size: 40px;
+            }
+            .about-features {
                 grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .equipment-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-wrapper {
+                padding: 36px 28px;
+            }
+            .modal {
+                padding: 40px 28px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .back-to-top {
+                bottom: 24px;
+                right: 24px;
+            }
+            .testimonial-card {
+                min-width: 340px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            .stat-item::after {
+                display: none;
+            }
+            .section-title {
+                font-size: 32px;
+                letter-spacing: -1px;
+            }
+            .logo-text .brand {
+                font-size: 16px;
+            }
+            .logo-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+            .testimonial-card {
+                min-width: 300px;
+                padding: 28px;
+            }
+            .equipment-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .equipment-card {
+                padding: 28px 16px;
+            }
+            .equipment-icon {
+                width: 56px;
+                height: 56px;
+            }
+            .equipment-icon i {
+                font-size: 24px;
+            }
+            .equipment-card h3 {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-home logo-icon"></i>
-                Southern <span>Coastal</span> Homes
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <div class="loader-logo-inner">5</div>
+            </div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-text">Five Investment Limited</div>
+        </div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="navbar transparent" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <div class="logo-icon">5</div>
+                <div class="logo-text">
+                    <span class="brand">Five Investment</span>
+                    <span class="tagline">Construction & Equipment Solutions</span>
+                </div>
             </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT US</a></li>
-                    <li class="has-dropdown">
-                        <a href="portfolio.html">PORTFOLIO <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="portfolio.html#featured">Featured Homes</a></li>
-                            <li><a href="portfolio.html#remodels">Remodels</a></li>
-                            <li><a href="portfolio.html#gallery">Home Gallery</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="services.html">SERVICES</a></li>
-                    <li><a href="faqs.html">FAQS</a></li>
-                    <li><a href="contact.html">CONTACT US</a></li>
-                </ul>
-            </nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#equipment">Equipment</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="tel:0922627256" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>0922 627 256</span>
+                </a>
+                <button class="btn-quote-nav" onclick="openModal()">
+                    <span><i class="fas fa-file-alt" style="margin-right:8px;"></i> Get Quote</span>
+                </button>
+                <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Mobile Navigation -->
-    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileNav()"></div>
+
     <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" id="mobileNavClose">
-            <i class="fas fa-times"></i>
+        <a href="#home" onclick="toggleMobileNav()"><i class="fas fa-home"></i> Home</a>
+        <a href="#about" onclick="toggleMobileNav()"><i class="fas fa-building"></i> About</a>
+        <a href="#services" onclick="toggleMobileNav()"><i class="fas fa-tools"></i> Services</a>
+        <a href="#equipment" onclick="toggleMobileNav()"><i class="fas fa-tractor"></i> Equipment</a>
+        <a href="#faqs" onclick="toggleMobileNav()"><i class="fas fa-question-circle"></i> FAQs</a>
+        <a href="#contact" onclick="toggleMobileNav()"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="tel:0922627256" class="mobile-phone-cta">
+            <i class="fas fa-phone"></i>
+            <div>
+                <div style="font-size:12px;opacity:0.7;font-weight:500;">Call Us Now</div>
+                0922 627 256
+            </div>
+        </a>
+        <button class="mobile-quote-btn" onclick="openModal();toggleMobileNav();">
+            <i class="fas fa-file-alt" style="margin-right:10px;"></i> Get a Free Quote
         </button>
-        <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
-            <li><a href="portfolio.html">PORTFOLIO</a></li>
-            <li><a href="services.html">SERVICES</a></li>
-            <li><a href="faqs.html">FAQS</a></li>
-            <li><a href="contact.html">CONTACT US</a></li>
-        </ul>
     </div>
 
-    <!-- Hero Slider (Home Page) -->
-    <div id="home-page" class="page-content" style="display: none;">
-        <section class="hero">
-            <div class="slider">
-                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
-                    <div class="slide-content">
-                        <h1>LOWCOUNTRY EXCELLENCE</h1>
-                        <p>Award winning, full service, custom home builder designing unique, elegant, showcase homes.</p>
-                        <a href="portfolio.html" class="btn">VIEW OUR CUSTOM HOME PORTFOLIO</a>
-                    </div>
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="assets/five.jpg" alt="Construction Equipment Site">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-gradient-orb orb-1"></div>
+        <div class="hero-gradient-orb orb-2"></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-main">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    <span>Juba, South Sudan 🇸🇸</span>
                 </div>
-                <div class="slide" style="background-image: url('assets/home.jpg');">
-                    <div class="slide-content">
-                        <h1>AWARD WINNING DESIGNS</h1>
-                        <p>Creating unique, elegant homes that reflect your vision and lifestyle in the beautiful Lowcountry.</p>
-                        <a href="about.html" class="btn">LEARN MORE ABOUT US</a>
-                    </div>
+                <h1>
+                    <span class="line"><span class="line-inner">Powering Construction</span></span>
+                    <span class="line"><span class="line-inner">& Equipment</span></span>
+                    <span class="line"><span class="line-inner"><span class="highlight">Solutions</span></span></span>
+                </h1>
+                <p class="hero-description">Five Investment Limited is a trusted company based in Juba, South Sudan, specializing in construction services and heavy equipment hire. We provide reliable, affordable, and professional solutions for road construction, site development, and general supplies.</p>
+                <div class="hero-cta">
+                    <a href="tel:0922627256" class="btn-primary">
+                        <i class="fas fa-phone"></i>
+                        <span>Call Us Now</span>
+                    </a>
+                    <button class="btn-secondary" onclick="openModal()">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Get a Free Quote</span>
+                    </button>
                 </div>
-                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
-                    <div class="slide-content">
-                        <h1>YOUR DREAM HOME AWAITS</h1>
-                        <p>Let us help you design and build the custom home you've always envisioned.</p>
-                        <a href="contact.html" class="btn">CONTACT US TODAY</a>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+                        <div class="stat-label">Equipment Fleet</div>
                     </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <div class="slider-control active" data-slide="0"></div>
-                <div class="slider-control" data-slide="1"></div>
-                <div class="slider-control" data-slide="2"></div>
-            </div>
-        </section>
-
-        <!-- Featured Homes Section -->
-        <section class="container">
-            <h2 class="section-title">FEATURED HOMES</h2>
-            <div class="homes-grid">
-                <div class="home-card">
-                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ballybunion II">
-                    <div class="home-card-content">
-                        <h3>Ballybunion II</h3>
-                        <div class="location">COLLETON RIVER / FEATURED HOMES</div>
-                        <p>Elegant custom home with classic Lowcountry design and modern amenities.</p>
+                    <div class="stat-item">
+                        <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+                        <div class="stat-label">Client Satisfaction</div>
                     </div>
-                </div>
-                <div class="home-card">
-                    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bridgetown I">
-                    <div class="home-card-content">
-                        <h3>Bridgetown I</h3>
-                        <div class="location">WEXFORD</div>
-                        <p>Spacious family home with open floor plan and panoramic water views.</p>
-                    </div>
-                </div>
-                <div class="home-card">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Inverness II">
-                    <div class="home-card-content">
-                        <h3>Inverness II</h3>
-                        <div class="location">COLLETON RIVER</div>
-                        <p>Luxurious retreat with custom finishes and attention to every detail.</p>
+                    <div class="stat-item">
+                        <div class="stat-number"><span class="counter" data-target="15">0</span>+</div>
+                        <div class="stat-label">Expert Team</div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Testimonial Section -->
-        <section class="testimonial">
-            <div class="container">
-                <div class="testimonial-content">
-                    <p>Last summer my wife and I made the decision that we were going to build our first home. We spent countless hours interviewing companies and thinking about what we were looking for in a builder. We wanted a company that truly cared and would spend the time to make their clients comfortable with each decision they were making. We wanted to know that we could trust the people that were building our dream home. Anne and Scott at Southern Coastal Homes have exceeded our expectations in every aspect. They, along with Patrick and their entire team, have poured their heart and soul into getting our home designed and built during an incredibly challenging time. To us, they are not just professional custom home builders, we now consider them friends. To anyone looking to build a high-end custom home in the Lowcountry look no further than Southern Coastal Homes.</p>
-                    <p class="client-name">The Tokarski Family, Wexford</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Awards Section -->
-        <section class="awards">
-            <div class="container">
-                <h2 class="section-title">AWARDS & RECOGNITION</h2>
-                <div class="awards-content">
-                    <p>We are so very grateful to our clients, co-workers, vendor partners, and business associates for your support!</p>
-                    <div class="award-logo">
-                        <h3>Hilton Head Area Home Builders Association</h3>
-                        <p>Proud Member Since 2015</p>
+            <div class="hero-side">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-icon"><i class="fas fa-tractor"></i></div>
+                        <div class="hero-card-title">Equipment Available</div>
                     </div>
+                    <div class="hero-card-value">7+</div>
+                    <div class="hero-card-sub">Types of heavy machinery</div>
+                    <div class="hero-card-bar"><div class="hero-card-bar-fill" data-width="88"></div></div>
                 </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about-page" class="page-content" style="display: none;">
-        <div class="page-header">
-            <div class="container">
-                <h1>ABOUT US</h1>
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-icon"><i class="fas fa-award"></i></div>
+                        <div class="hero-card-title">Service Rating</div>
+                    </div>
+                    <div class="hero-card-value">4.9/5</div>
+                    <div class="hero-card-sub">Based on client reviews</div>
+                    <div class="hero-card-bar"><div class="hero-card-bar-fill" data-width="98"></div></div>
+                </div>
             </div>
         </div>
-        
-        <section class="container">
-            <div class="about-section">
-                <h2 class="section-title">Southern Coastal Homes</h2>
-                <p>Southern Coastal Homes is an award-winning, custom builder with a rich history in the building industry. We are a smaller-volume boutique builder focused purely on residential construction with a strong emphasis on personal attention and expert craftsmanship. Both of the business owners have over 25 years in the building industry, are extremely involved in each unique project, and are genuinely interested in delivering extraordinary results.</p>
-                
-                <p>Scott Middleton is a CPA who comes from the financial sector of the homebuilding business. He views your custom residence as not only the place you live and enjoy but also as a significant investment in your financial portfolio. His focus is to deliver both enjoyment and fiscal value in a home. Scott works in conjunction with each client to create realistic budgets and structure the monetary planning involved with a custom build.</p>
-                
-                <p>Anne Middleton is both an operations and design expert from the homebuilding industry. Anne and her team work closely with each client to ensure that form, function, and aesthetics are fused perfectly together to create the ideal custom home. Gone are the old days of the in-office showrooms – Anne works in partnership with you and true field experts to ensure you are selecting from the most innovative home design products available on the market.</p>
-                
-                <p>From our company owners to the marketing, operations, and project management, the Southern Coastal Homes team is fully committed to utilizing the highest quality of materials and building practices, while only working with carefully curated subcontractors and master craftsmen. Our innovative approach to home building has definitively set us apart from the competition.</p>
-                
-                <p><em>Let your dreams become our next project.</em></p>
-            </div>
-            
-            <div class="team">
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="assets/scott.jpg" alt="Scott Middleton">
-                    </div>
-                    <h3>Scott Middleton</h3>
-                    <p class="location">PRESIDENT</p>
-                    <p>Scott is a Licensed Residential Builder with over 25 years of residential building experience. Before founding Southern Coastal Homes, he owned a successful homebuilding and development company and was President of the South Carolina Coastal Division of Del Webb Corporation where he built more than 1,000 homes per year.</p>
-                    <blockquote>"When it comes to people, we only work with the best. We have assembled a team of skilled project managers and master craftsmen. We work collaboratively with our clients to create a home that exceeds expectations and holds its value for years to come."</blockquote>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="assets/anne.jpg" alt="Anne Middleton">
-                    </div>
-                    <h3>Anne Middleton</h3>
-                    <p class="location">CLIENT RELATIONS</p>
-                    <p>Anne is a 20-year real-estate and marketing veteran having worked in the residential and commercial building industry. Formerly Vice President of Sales & Marketing for a large national builder, Anne is now dedicated to helping bring Southern Coastal Homes' client vision of their ideal homes, to life.</p>
-                    <blockquote>"The architecture and the land in the Lowcountry is unlike anywhere else in the country. Blending the two for my clients has been the most rewarding part of my job."</blockquote>
-                </div>
-            </div>
-        </section>
-    </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-    <!-- Portfolio Page -->
-    <div id="portfolio-page" class="page-content" style="display: none;">
-        <div class="page-header">
-            <div class="container">
-                <h1>PORTFOLIO</h1>
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="about-decorative-pattern"></div>
+                    <div class="about-image">
+                        <img src="assets/five.jpg" alt="Five Investment Team">
+                    </div>
+                    <div class="about-floating-badge">
+                        <div class="number">5IL</div>
+                        <div class="label">Trusted in Juba</div>
+                    </div>
+                </div>
+                <div class="about-content" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">Your Trusted <span class="accent">Equipment & Construction Partner</span></h2>
+                    <p class="about-text">At Five Investment Limited, we are committed to delivering high-quality construction support and equipment rental services. With a strong presence in Juba, we help contractors, developers, and organizations complete projects efficiently with the right machinery and expertise.</p>
+                    <p class="about-text">We specialize in road construction, earthworks, site preparation, and general supplies — providing reliable, affordable, and professional solutions across South Sudan.</p>
+                    <div class="about-features">
+                        <div class="about-feature"><i class="fas fa-check-circle"></i><span>Affordable Hire Rates</span></div>
+                        <div class="about-feature"><i class="fas fa-check-circle"></i><span>Well-Maintained Equipment</span></div>
+                        <div class="about-feature"><i class="fas fa-check-circle"></i><span>Fast & Responsive Service</span></div>
+                        <div class="about-feature"><i class="fas fa-check-circle"></i><span>Strong Local Presence</span></div>
+                    </div>
+                    <a href="#services" class="btn-primary"><i class="fas fa-arrow-right"></i><span>Our Services</span></a>
+                </div>
             </div>
         </div>
-        
-        <section class="container">
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="featured">Featured Homes</button>
-                <button class="filter-btn" data-filter="remodels">Remodels</button>
-                <button class="filter-btn" data-filter="gallery">Home Gallery</button>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="featured">
-                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ballybunion II">
-                    <div class="portfolio-item-overlay">
-                        <h3>Ballybunion II</h3>
-                        <p>COLLETON RIVER / FEATURED HOMES</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="featured">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Inverness II">
-                    <div class="portfolio-item-overlay">
-                        <h3>Inverness II</h3>
-                        <p>COLLETON RIVER</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="remodels">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hobnoy Remodel">
-                    <div class="portfolio-item-overlay">
-                        <h3>Hobnoy: Remodel</h3>
-                        <p>FEATURED HOMES / PALMETTO BLUFF</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="gallery">
-                    <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ballybunion V">
-                    <div class="portfolio-item-overlay">
-                        <h3>Ballybunion V</h3>
-                        <p>HOME GALLERY</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="gallery">
-                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Steam Gun">
-                    <div class="portfolio-item-overlay">
-                        <h3>Steam Gun</h3>
-                        <p>FEATURED HOMES / PORT ROYAL</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="gallery">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lynnfield II">
-                    <div class="portfolio-item-overlay">
-                        <h3>Lynnfield II</h3>
-                        <p>HOME GALLERY</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    </section>
 
-    <!-- Services Page -->
-    <div id="services-page" class="page-content" style="display: none;">
-        <div class="page-header">
-            <div class="container">
-                <h1>SERVICES</h1>
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Our <span class="accent">Core Services</span></h2>
+                <p class="section-subtitle">We offer comprehensive construction and equipment solutions tailored to meet the diverse needs of projects across South Sudan.</p>
+            </div>
+            <div class="services-grid five-items">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-number">01</div>
+                    <div class="service-icon"><i class="fas fa-tractor"></i></div>
+                    <h3>Construction Equipment Hire</h3>
+                    <p>Access our extensive fleet of well-maintained heavy machinery including excavators, graders, rollers, bulldozers, dump trucks, backhoes, and wheel loaders at competitive rates.</p>
+                    <a href="#equipment" class="service-link">View Equipment <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-number">02</div>
+                    <div class="service-icon"><i class="fas fa-road"></i></div>
+                    <h3>Road Construction & Maintenance</h3>
+                    <p>Expert road construction and maintenance services using modern equipment and proven techniques to build durable infrastructure that connects communities.</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-number">03</div>
+                    <div class="service-icon"><i class="fas fa-mountain"></i></div>
+                    <h3>Earthworks & Site Preparation</h3>
+                    <p>Professional earthworks and site preparation services including land clearing, grading, excavation, and foundation preparation for any construction project.</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-number">04</div>
+                    <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                    <h3>General Supplies</h3>
+                    <p>Reliable supply of construction materials and general supplies to support your projects, ensuring timely delivery and quality products every time.</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-number">05</div>
+                    <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Project Support Services</h3>
+                    <p>End-to-end project support including planning, logistics, and on-site assistance to ensure your construction projects run smoothly from start to finish.</p>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-        
-        <section class="container">
-            <h2 class="section-title">OUR SERVICES</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">At Southern Coastal Homes, we offer a comprehensive range of services to bring your dream home to life. From initial design to final construction, we are with you every step of the way.</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-drafting-compass"></i>
-                    <h3>Custom Home Design</h3>
-                    <p>Collaborative design process to create a home that reflects your vision, lifestyle, and personality with expert guidance on architecture and aesthetics.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-home"></i>
-                    <h3>New Home Construction</h3>
-                    <p>Full-service construction of high-quality custom homes using the finest materials and craftsmanship, with attention to every detail.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Renovation & Remodeling</h3>
-                    <p>Transforming existing homes to meet your changing needs while preserving the character and charm of the original structure.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h3>Project Management</h3>
-                    <p>Comprehensive oversight of your project from concept to completion, ensuring timelines, budgets, and quality standards are met.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-palette"></i>
-                    <h3>Interior Design Consultation</h3>
-                    <p>Expert guidance on interior finishes, fixtures, and furnishings to create cohesive and beautiful living spaces throughout your home.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Client Relationship Management</h3>
-                    <p>Dedicated support throughout your building journey, ensuring clear communication and a smooth, enjoyable experience.</p>
-                </div>
-            </div>
-        </section>
-    </div>
+    </section>
 
-    <!-- FAQ Page -->
-    <div id="faqs-page" class="page-content" style="display: none;">
-        <div class="page-header">
-            <div class="container">
-                <h1>FREQUENTLY ASKED QUESTIONS</h1>
+    <section class="section equipment" id="equipment">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-label">Our Fleet</div>
+                <h2 class="section-title">Available <span class="accent">Equipment</span></h2>
+                <p class="section-subtitle">We maintain a diverse fleet of well-serviced heavy machinery ready for hire at competitive rates across Juba and beyond.</p>
+            </div>
+            <div class="equipment-grid">
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="equipment-icon"><i class="fas fa-tractor"></i></div>
+                    <h3>Excavators</h3>
+                    <span class="equipment-tag">Heavy Duty</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="equipment-icon"><i class="fas fa-road"></i></div>
+                    <h3>Graders</h3>
+                    <span class="equipment-tag">Precision</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="equipment-icon"><i class="fas fa-weight-hanging"></i></div>
+                    <h3>Rollers</h3>
+                    <span class="equipment-tag">Compaction</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="equipment-icon"><i class="fas fa-tractor"></i></div>
+                    <h3>Bulldozers</h3>
+                    <span class="equipment-tag">Earthmoving</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="equipment-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Dump Trucks</h3>
+                    <span class="equipment-tag">Haulage</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="equipment-icon"><i class="fas fa-toolbox"></i></div>
+                    <h3>Backhoes</h3>
+                    <span class="equipment-tag">Versatile</span>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="equipment-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h3>Wheel Loaders</h3>
+                    <span class="equipment-tag">Loading</span>
+                </div>
+                <div class="equipment-card and-more" data-aos="fade-up" data-aos-delay="450">
+                    <div class="equipment-icon"><i class="fas fa-plus-circle"></i></div>
+                    <h3>And More...</h3>
+                    <span class="equipment-tag">Contact Us</span>
+                </div>
             </div>
         </div>
-        
-        <section class="container">
-            <h2 class="section-title">FAQ ABOUT THE HOME BUILDING PROCESS</h2>
-            
-            <div class="faq-list">
-                <div class="faq-item active">
-                    <div class="faq-question">
-                        <span>HOW DO I KNOW SOUTHERN COASTAL HOMES IS THE RIGHT BUILDER FOR ME?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>At Southern Coastal Homes we truly believe that building your dream home is a collaborative effort. Your home should be a reflection of you and the things you love. It should be thoughtfully designed to reflect the way you want to utilize your spaces. We listen closely and help to translate your ideas into your vision.</p>
-                        <p>We pride ourselves on building a spectacular home at a fair and reasonable price and we firmly believe you will find our company fair and transparent. Anyone can build to a plan. It truly gets down to our commitment, mastery of craftsmanship, attention to detail, focus on quality, and quite frankly… trust between the client and the builder.</p>
-                        <p>We encourage you to start a discussion. We would love to help.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>WHAT MAKES SOUTHERN COASTAL HOMES UNIQUE?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We are a boutique custom home builder focused on personal attention and expert craftsmanship. Our owners have over 25 years of experience and are directly involved in every project. We combine financial expertise with design excellence to create homes that are both beautiful and valuable investments.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>WHAT IS YOUR PRICE PER SQUARE FOOT?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Because we build truly custom homes, our prices vary depending on the complexity of design, materials selected, and site conditions. We provide transparent, detailed estimates for each project after understanding your specific needs and preferences. We focus on delivering value through quality craftsmanship rather than competing on price alone.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>HOW LONG DOES IT TAKE TO BUILD A NEW HOME?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>The timeline for building a custom home typically ranges from 9 to 18 months, depending on the size and complexity of the project, as well as current market conditions. We provide a detailed project timeline during the planning phase and maintain regular communication throughout the process to keep you informed of progress.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>I LIVE OUT OF STATE RIGHT NOW, BUT AM MOVING TO THE LOWCOUNTRY. CAN I STILL BUILD A HOME WITH YOU?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely! We have extensive experience working with clients who are relocating to the area. We utilize technology for virtual meetings, provide regular photo updates, and ensure clear communication throughout the process. Many of our clients successfully build their dream homes while living out of state.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>WHERE DOES SOUTHERN COASTAL HOMES BUILD?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We build throughout the South Carolina Lowcountry, including Bluffton, Hilton Head Island, Beaufort, and surrounding areas. We have experience building in many of the region's premier communities including Colleton River, Wexford, Palmetto Bluff, Belfair, and Port Royal.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    </section>
 
-    <!-- Contact Page -->
-    <div id="contact-page" class="page-content" style="display: none;">
-        <div class="page-header">
-            <div class="container">
-                <h1>CONTACT US</h1>
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our <span class="accent">Clients Say</span></h2>
             </div>
         </div>
-        
-        <section class="container">
-            <div class="contact-container">
-                <div>
-                    <h2 class="section-title">GET IN TOUCH WITH US</h2>
-                    <p>Want more information about Southern Coastal Homes? We'd love to hear from you. Enter your information below and we'll be in touch shortly.</p>
-                    <p>If you'd prefer to chat, give us a call at <strong>843-815-0100</strong>.</p>
-                    
-                    <div class="contact-info">
-                        <h3 style="margin-top: 2rem;">CONTACT INFORMATION</h3>
-                        <p><i class="fas fa-phone"></i> Phone: 843-815-0100</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Office: 19 Pritchard St. Bluffton, SC 29910</p>
-                        <p><i class="fas fa-clock"></i> Office Hours: M-F 9am - 5pm</p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Five Investment provided us with top-quality equipment that made our road project a success. Their rates are competitive and the machinery is always in great condition!"</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">AK</div><div class="testimonial-author-info"><h4>Abraham Kuot</h4><span>Civil Engineer</span></div></div>
                 </div>
-                
-                <div>
-                    <form class="contact-form">
-                        <h3>CONTACT FORM</h3>
-                        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
-                            <input type="text" placeholder="First Name" required style="flex: 1;">
-                            <input type="text" placeholder="Last Name" required style="flex: 1;">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Fast, reliable, and professional. We hired excavators and dump trucks from Five Investment and the entire process was seamless. Highly recommended for equipment hire in Juba."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">RN</div><div class="testimonial-author-info"><h4>Rebecca Nyandeng</h4><span>Project Manager</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"The team at Five Investment understands the local terrain and project requirements. Their earthworks and site preparation services saved us time and money."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">PM</div><div class="testimonial-author-info"><h4>Peter Malual</h4><span>Contractor</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Excellent service from start to finish. Their graders and rollers were instrumental in completing our site development on schedule. Will definitely use them again."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">GA</div><div class="testimonial-author-info"><h4>Grace Akech</h4><span>Developer</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Five Investment provided us with top-quality equipment that made our road project a success. Their rates are competitive and the machinery is always in great condition!"</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">AK</div><div class="testimonial-author-info"><h4>Abraham Kuot</h4><span>Civil Engineer</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Fast, reliable, and professional. We hired excavators and dump trucks from Five Investment and the entire process was seamless. Highly recommended for equipment hire in Juba."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">RN</div><div class="testimonial-author-info"><h4>Rebecca Nyandeng</h4><span>Project Manager</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"The team at Five Investment understands the local terrain and project requirements. Their earthworks and site preparation services saved us time and money."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">PM</div><div class="testimonial-author-info"><h4>Peter Malual</h4><span>Contractor</span></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Excellent service from start to finish. Their graders and rollers were instrumental in completing our site development on schedule. Will definitely use them again."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">GA</div><div class="testimonial-author-info"><h4>Grace Akech</h4><span>Developer</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-us" id="why-us">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title">The <span class="accent">5IL Advantage</span></h2>
+                <p class="section-subtitle">We combine expertise, dedication, and quality equipment to deliver construction solutions that exceed expectations.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card-icon"><i class="fas fa-tags"></i></div>
+                    <h3>Affordable Hire Rates</h3>
+                    <p>We offer competitive pricing on all our equipment and services, ensuring you get the best value for your construction budget without compromising on quality.</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Reliable & Well-Maintained Equipment</h3>
+                    <p>Our entire fleet undergoes regular maintenance and inspections to ensure every machine performs at its best when you need it most.</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-card-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Fast & Responsive Service</h3>
+                    <p>We understand construction timelines. Our team responds quickly to inquiries and ensures equipment is delivered to your site without delay.</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="why-card-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Experienced Support Team</h3>
+                    <p>Our knowledgeable staff provides expert guidance on equipment selection and project support, backed by years of industry experience.</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="why-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Strong Local Presence in Juba</h3>
+                    <p>With our office in Rock City and yard on Gudele Road, we're strategically positioned to serve clients throughout Juba and surrounding areas.</p>
+                </div>
+                <div class="why-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="why-card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Trusted by Contractors</h3>
+                    <p>We've earned the trust of contractors, developers, and organizations across South Sudan through consistent, reliable service delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faqs" id="faqs">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-label">FAQs</div>
+                <h2 class="section-title">Frequently Asked <span class="accent">Questions</span></h2>
+                <p class="section-subtitle">Find answers to common questions about our equipment hire, services, and how we can support your construction project.</p>
+            </div>
+            <div class="faqs-container">
+                <div class="faq-item active" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>What types of construction equipment do you hire out?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">We offer a wide range of heavy machinery including excavators, graders, rollers, bulldozers, dump trucks, backhoes, wheel loaders, and more. All our equipment is well-maintained and ready for immediate hire.</div></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>How do I book equipment for hire?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Booking is easy! Call us at 0922 627 256 or 0980 204 357, email info@fiveinvestmentsltd.com, or visit our office in Rock City, next to the playground in Juba. Our team will confirm availability and arrange delivery.</div></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>What are your hire rates and payment terms?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Our rates are competitive and depend on the equipment type and hire duration. We offer flexible payment terms and can provide detailed quotes based on your specific project requirements. Contact us for a customized estimate.</div></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Do you deliver equipment to project sites?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Yes! We provide equipment delivery to project sites across Juba and surrounding areas. Our team ensures safe transportation and on-time delivery so you can keep your project on schedule.</div></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>What condition is your equipment in?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">All our equipment undergoes rigorous maintenance and regular inspections. We take pride in keeping our fleet in excellent working condition to ensure reliability and safety on every project.</div></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Do you offer long-term hire options?</h3>
+                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Absolutely! We offer flexible hire periods including daily, weekly, monthly, and long-term contracts. Longer hire periods often come with discounted rates. Talk to us about your project timeline and we'll create a tailored package.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>🚜 Looking to Hire Construction Equipment?</h2>
+                <p>Contact Five Investment Limited today for reliable service and competitive rates! We're ready to support your next project with quality equipment and expert service.</p>
+                <div class="cta-buttons">
+                    <a href="tel:0922627256" class="btn-primary"><i class="fas fa-phone"></i><span>Call: 0922 627 256</span></a>
+                    <a href="https://wa.me/211922627256" target="_blank" class="btn-secondary" style="background:rgba(37,211,102,0.15);border-color:rgba(37,211,102,0.3);color:#25d366;"><i class="fab fa-whatsapp"></i><span>WhatsApp Us</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="section-label">Get In Touch</div>
+                    <h2 class="section-title">Let's Power Your <span class="accent">Next Project</span></h2>
+                    <p class="contact-text">We're always ready to discuss your equipment and construction needs. Whether you need a quote, want to check equipment availability, or have a question about our services, don't hesitate to reach out.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Phone / WhatsApp</h4>
+                                <a href="tel:0922627256">0922 627 256</a>
+                                <span style="display:block;color:var(--text-light);font-size:14px;"> | </span>
+                                <a href="tel:0980204357">0980 204 357</a>
+                            </div>
                         </div>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="tel" placeholder="Your Phone Number">
-                        <textarea placeholder="How Can We Help You?"></textarea>
-                        <button type="submit" class="btn">SEND MESSAGE</button>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <a href="mailto:info@fiveinvestmentsltd.com">info@fiveinvestmentsltd.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-building"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Office</h4>
+                                <p>Rock City, next to the playground, Juba</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-warehouse"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Equipment Yard</h4>
+                                <p>Pity Oil, Gudele Road (opposite Almangalawi Supermarket)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/211922627256" target="_blank" class="social-link whatsapp-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left" data-aos-duration="1000">
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out the form below and we'll get back to you promptly.</p>
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group"><label>Full Name *</label><input type="text" placeholder="John Doe" required></div>
+                            <div class="form-group"><label>Phone Number *</label><input type="tel" placeholder="+211 ..." required></div>
+                        </div>
+                        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+                        <div class="form-group"><label>Service Interested In</label><select><option value="">Select a service</option><option>Construction Equipment Hire</option><option>Road Construction & Maintenance</option><option>Earthworks & Site Preparation</option><option>General Supplies</option><option>Project Support Services</option></select></div>
+                        <div class="form-group"><label>Project Details</label><textarea placeholder="Tell us about your project and equipment needs..."></textarea></div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i><span>Send Message</span></button>
                     </form>
                 </div>
             </div>
-        </section>
-        
-        <!-- Map Section -->
-        <section style="padding-top: 0;">
-            <div class="container">
-                <h2 class="section-title">COME VISIT US</h2>
-                <div style="height: 400px; background-color: var(--beige); display: flex; align-items: center; justify-content: center; border-radius: 3px;">
-                    <div style="text-align: center;">
-                        <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;"></i>
-                        <h3>Our Office Location</h3>
-                        <p>19 Pritchard St., Bluffton, SC 29910</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Southern Coastal Homes</h3>
-                    <p>Award-winning, full service, custom home builder designing unique, elegant, showcase homes in the Lowcountry.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="nav-logo">
+                        <div class="logo-icon">5</div>
+                        <div class="logo-text"><span class="brand">Five Investment</span><span class="tagline">Construction & Equipment Solutions</span></div>
+                    </a>
+                    <p>Five Investment Limited is a trusted company based in Juba, South Sudan, specializing in construction services and heavy equipment hire. We provide reliable, affordable, and professional solutions.</p>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#equipment">Equipment</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <div class="contact-info">
-                        <p><i class="fas fa-phone"></i> 843-815-0100</p>
-                        <p><i class="fas fa-map-marker-alt"></i> 19 Pritchard St. Bluffton, SC 29910</p>
-                        <p><i class="fas fa-clock"></i> M-F 9am - 5pm</p>
-                    </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">Equipment Hire</a></li>
+                        <li><a href="#services">Road Construction</a></li>
+                        <li><a href="#services">Earthworks</a></li>
+                        <li><a href="#services">General Supplies</a></li>
+                        <li><a href="#services">Project Support</a></li>
+                    </ul>
                 </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="tel:0922627256"><i class="fas fa-phone"></i> 0922 627 256</a></li>
+                        <li><a href="tel:0980204357"><i class="fas fa-phone"></i> 0980 204 357</a></li>
+                        <li><a href="mailto:info@fiveinvestmentsltd.com"><i class="fas fa-envelope"></i> info@fiveinvestmentsltd.com</a></li>
+                        <li><a href="#contact"><i class="fas fa-map-marker-alt"></i> Rock City, Juba</a></li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>A PROUD MEMBER OF THE HILTON HEAD AREA HOME BUILDERS ASSOCIATION</p>
-                <p style="margin-top: 1rem;">COPYRIGHT 2025 - SOUTHERN COASTAL HOMES</p>
+                <p>&copy; 2026 Five Investment Limited. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
             </div>
         </div>
     </footer>
 
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <h2>Request a Quote</h2>
+            <p>Tell us about your project and equipment needs, and we'll provide a detailed estimate.</p>
+            <form onsubmit="handleQuoteSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your full name" required></div>
+                    <div class="form-group"><label>Phone *</label><input type="tel" placeholder="+211 ..." required></div>
+                </div>
+                <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+                <div class="form-group"><label>Project Type</label><select><option value="">Select project type</option><option>Equipment Hire</option><option>Road Construction</option><option>Earthworks & Site Prep</option><option>General Supplies</option><option>Project Support</option><option>Other</option></select></div>
+                <div class="form-group"><label>Project Description</label><textarea placeholder="Describe your project requirements, equipment needed, location, budget range, and timeline..." rows="4"></textarea></div>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i><span>Submit Quote Request</span></button>
+            </form>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
     <script>
-        // Single page application navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all page elements
-            const pages = {
-                home: document.getElementById('home-page'),
-                about: document.getElementById('about-page'),
-                portfolio: document.getElementById('portfolio-page'),
-                services: document.getElementById('services-page'),
-                faqs: document.getElementById('faqs-page'),
-                contact: document.getElementById('contact-page')
-            };
-            
-            // Get all navigation links
-            const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileNavClose = document.getElementById('mobileNavClose');
-            const overlay = document.getElementById('overlay');
-            
-            // Show home page by default
-            showPage('home');
-            
-            // Set up navigation
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageName = this.getAttribute('href').replace('.html', '');
-                    
-                    // Close mobile menu if open
-                    mobileNav.classList.remove('active');
-                    overlay.classList.remove('active');
-                    
-                    // Show the selected page
-                    showPage(pageName);
-                    
-                    // Update URL without reloading
-                    history.pushState({page: pageName}, '', `${pageName}.html`);
+        AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100, disable: 'mobile' });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('pageLoader').classList.add('hidden');
+                document.querySelectorAll('.hero-card-bar-fill').forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
                 });
-            });
-            
-            // Mobile menu toggle
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileNav.classList.add('active');
-                overlay.classList.add('active');
-            });
-            
-            mobileNavClose.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-            
-            overlay.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-            
-            // Handle browser back/forward buttons
-            window.addEventListener('popstate', function(e) {
-                if (e.state && e.state.page) {
-                    showPage(e.state.page);
-                } else {
-                    showPage('home');
-                }
-            });
-            
-            // Function to show a specific page
-            function showPage(pageName) {
-                // Hide all pages
-                Object.values(pages).forEach(page => {
-                    if (page) page.style.display = 'none';
-                });
-                
-                // Show the requested page
-                if (pages[pageName]) {
-                    pages[pageName].style.display = 'block';
-                    
-                    // If it's the home page, initialize the slider
-                    if (pageName === 'home') {
-                        initSlider();
-                    }
-                    
-                    // If it's the portfolio page, initialize the filter
-                    if (pageName === 'portfolio') {
-                        initPortfolioFilter();
-                    }
-                    
-                    // If it's the FAQ page, initialize the accordion
-                    if (pageName === 'faqs') {
-                        initFAQAccordion();
-                    }
-                    
-                    // Scroll to top when changing pages
-                    window.scrollTo(0, 0);
-                }
-            }
-            
-            // Initialize the slider on home page
-            function initSlider() {
-                const slides = document.querySelectorAll('.slide');
-                const controls = document.querySelectorAll('.slider-control');
-                let currentSlide = 0;
-                let slideInterval;
-                
-                // Function to show a specific slide
-                function showSlide(index) {
-                    // Hide all slides
-                    slides.forEach(slide => {
-                        slide.classList.remove('active');
-                    });
-                    
-                    // Remove active class from all controls
-                    controls.forEach(control => {
-                        control.classList.remove('active');
-                    });
-                    
-                    // Show the selected slide
-                    slides[index].classList.add('active');
-                    controls[index].classList.add('active');
-                    
-                    currentSlide = index;
-                }
-                
-                // Function to go to next slide
-                function nextSlide() {
-                    let nextIndex = (currentSlide + 1) % slides.length;
-                    showSlide(nextIndex);
-                }
-                
-                // Set up automatic sliding
-                function startSlider() {
-                    slideInterval = setInterval(nextSlide, 4000);
-                }
-                
-                // Stop automatic sliding
-                function stopSlider() {
-                    clearInterval(slideInterval);
-                }
-                
-                // Set up manual controls
-                controls.forEach((control, index) => {
-                    control.addEventListener('click', function() {
-                        stopSlider();
-                        showSlide(index);
-                        startSlider();
-                    });
-                });
-                
-                // Pause slider on hover
-                const slider = document.querySelector('.slider');
-                if (slider) {
-                    slider.addEventListener('mouseenter', stopSlider);
-                    slider.addEventListener('mouseleave', startSlider);
-                }
-                
-                // Initialize the slider
-                showSlide(0);
-                startSlider();
-            }
-            
-            // Initialize portfolio filter
-            function initPortfolioFilter() {
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const portfolioItems = document.querySelectorAll('.portfolio-item');
-                
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        // Remove active class from all buttons
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        
-                        // Add active class to clicked button
-                        this.classList.add('active');
-                        
-                        const filterValue = this.getAttribute('data-filter');
-                        
-                        // Show/hide portfolio items based on filter
-                        portfolioItems.forEach(item => {
-                            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                                item.style.display = 'block';
-                                setTimeout(() => {
-                                    item.style.opacity = '1';
-                                    item.style.transform = 'scale(1)';
-                                }, 10);
-                            } else {
-                                item.style.opacity = '0';
-                                item.style.transform = 'scale(0.8)';
-                                setTimeout(() => {
-                                    item.style.display = 'none';
-                                }, 300);
-                            }
-                        });
-                    });
-                });
-            }
-            
-            // Initialize FAQ accordion
-            function initFAQAccordion() {
-                const faqItems = document.querySelectorAll('.faq-item');
-                
-                faqItems.forEach(item => {
-                    const question = item.querySelector('.faq-question');
-                    
-                    question.addEventListener('click', function() {
-                        // Close all other items
-                        faqItems.forEach(otherItem => {
-                            if (otherItem !== item && otherItem.classList.contains('active')) {
-                                otherItem.classList.remove('active');
-                            }
-                        });
-                        
-                        // Toggle current item
-                        item.classList.toggle('active');
-                    });
-                });
-            }
-            
-            // Header scroll effect
-            const header = document.getElementById('header');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Contact form submission
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Thank you for your message! We will get back to you shortly.');
-                    contactForm.reset();
-                });
-            }
-            
-            // Initialize the home page slider
-            initSlider();
-            
-            // Initialize portfolio filter if on portfolio page
-            if (window.location.pathname.includes('portfolio')) {
-                initPortfolioFilter();
-            }
-            
-            // Initialize FAQ accordion if on FAQ page
-            if (window.location.pathname.includes('faqs')) {
-                initFAQAccordion();
-            }
+            }, 1800);
         });
+
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 80) { navbar.classList.add('scrolled');
+                navbar.classList.remove('transparent'); } else { navbar.classList.remove('scrolled');
+                navbar.classList.add('transparent'); }
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList
+                    .remove('visible'); }
+            updateActiveNav();
+        });
+
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            let current = '';
+            sections.forEach(section => { const sectionTop = section.offsetTop - 120; if (window.scrollY >=
+                    sectionTop) { current = section.getAttribute('id'); } });
+            navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' +
+                    current) { link.classList.add('active'); } });
+        }
+
+        function toggleMobileNav() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileOverlay');
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => { item.classList.remove('active'); });
+            if (!isActive) { faqItem.classList.add('active'); }
+        }
+
+        function openModal() { document.getElementById('quoteModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; }
+
+        function closeModal() { document.getElementById('quoteModal').classList.remove('active');
+            document.body.style.overflow = ''; }
+        document.getElementById('quoteModal').addEventListener('click', (e) => { if (e.target === document.getElementById(
+                'quoteModal')) { closeModal(); } });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-submit span');
+            const originalText = btn.textContent;
+            btn.textContent = 'Message Sent!';
+            e.target.querySelector('.btn-submit').style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            setTimeout(() => { btn.textContent = originalText;
+                e.target.querySelector('.btn-submit').style.background = '';
+                e.target.reset(); }, 3000);
+        }
+
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.btn-submit span');
+            const originalText = btn.textContent;
+            btn.textContent = 'Quote Requested!';
+            e.target.querySelector('.btn-submit').style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            setTimeout(() => { btn.textContent = originalText;
+                e.target.querySelector('.btn-submit').style.background = '';
+                e.target.reset();
+                closeModal(); }, 3000);
+        }
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => { const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) { const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.floor(target * easeOut); if (progress < 1) { requestAnimationFrame(
+                            update); } }
+                requestAnimationFrame(update); });
+        }
+        const heroObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting)
+        { animateCounters();
+                heroObserver.disconnect(); } }); }, { threshold: 0.5 });
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) heroObserver.observe(heroStats);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const
+                href = this.getAttribute('href'); if (href !== '#') { e.preventDefault();
+                const target = document.querySelector(href); if (target) { target.scrollIntoView({ behavior: 'smooth' }); } } }); });
+
+        window.addEventListener('scroll', () => { const heroBg = document.querySelector('.hero-bg img'); if (heroBg) { const
+                scrolled = window.scrollY;
+                heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.15}px)`; } });
     </script>
 </body>
 </html>
